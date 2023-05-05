@@ -210,6 +210,72 @@ cat(
 ```
 output
 ### Soal 4
+Diketahui:  
+mean = 45 
+sd = 6  
+
+a. Dari soal kita tahu bahwa soal ini menggunakan distribusi normal. Disini kita harus mencari beberapa hal. Yang pertama adalah `P(X1 ≤ x ≤ X2` yang dapat dengan mudah kita cari dengan menggunakan `pnorm` caranya adalah dengn menyetting 'lower.tail = TRUE' untuk keduanya kita bisa menghitung nilai pnorm nya dan menguranginyauntuk mendapatkan nilai yang kita mau.
+```
+cat("P(X1 ≤ x ≤ X2): ", 
+    pnorm(x2, mean, sd, lower.tail = TRUE, log.p = FALSE) -
+      pnorm(x1, mean,sd, lower.tail = TRUE, log.p = FALSE)
+    ,"\n"
+    )
+```
+output:
+> P(X1 ≤ x ≤ X2):  0.07925971 
+
+Lalu kita diminta mencari nilai z-score. Maka dari itu, pertama-tama kita menjalankan `rnorm` untuk meng-generate hasil secara random yang nantinya akan kita cari nilai z-scorenya
+```
+set.seed(0)
+rand <- rnorm(100, mean, sd)
+cat("z-score: ",
+    zs <- (rand - mean(rand)) / sd
+    ,"\n"
+    )
+```
+output: 
+> z-score:  1.240286 -0.3489018 1.307131 1.249761 0.391973 -1.562618 
+> -0.9512355 -0.3173889 -0.02843562 2.381985 0.740925 -0.8216777 -1.170325 
+> -0.31213 -0.3218836 -0.4341793 0.229555 -0.9145896 0.4130148 -1.260207 
+> -0.2469363 0.3547272 0.1106679 0.7815211 -0.07977522 0.4809395 1.063101 
+> -0.7136223 -1.307268 0.02405772 -0.258375 -0.5655567 -0.4559788 -0.6721401 
+> 0.7040823 1.129243 0.9694919 -0.4521816 1.215636 -0.3020147 1.735235 
+> 0.5380776 -0.4754524 -0.8547117 -1.189239 -1.088259 -1.586451 1.133869 
+> 0.8093787 -0.2499971 0.2434689 -0.3993712 2.418696 -0.8180076 -0.07754592 
+> 0.2274729 0.5955748 -0.195292 -2.246569 -1.286283 0.3360604 -0.03371393 
+> -0.9633176 -0.1384938 -0.8376372 0.219595 -1.447767 0.3432727 0.2257442 
+> 0.04261973 -0.003512058 0.2346699 -0.6716785 -0.1418372 0.6414673 1.078301 
+> 0.121103 -0.140422 -0.9347368 -1.460255 -0.819758 1.231415 0.7494737 
+> -0.2421841 -0.4474787 -0.4416485 0.9743184 -0.2984465 1.23335 0.6240059 
+> 1.276644 -0.8959306 -0.01429749 -0.9035402 0.5735906 0.09704919 -0.3048423 
+> 1.43332 0.2063511 0.9738755 
+
+Lalu kita diminta untuk membuat plot berdasarkan z-score tersebut
+```
+par(mar = c(2, 2, 2, 2))
+
+plot(zs, main = "Data bangkitan acak", type="b")
+```
+output:
+
+b. Untuk membuat histogram cukup dengan memasukkan hasil `rnorm` ke dalam `hist`
+```
+# b.Membuat histogram 
+hist(rand, breaks = 50, 
+     col = "grey", border = "black",
+     main = "Histogram Distribusi Normal",
+     xlab = "Nilai",
+     ylab = "Frekuensi")
+```
+output:
+
+c. Nilai varian dari distribusi normal adalah kuadrat dari standar deviasinya
+```
+cat("Varian: ", sd^2, "\n")
+```
+output:
+> Varian:  25 
 ### Soal 5
 a. Soal meminta kita untuk menggunakan distribusi T-student. Untuk menghitung probabilitas terjadinya kejadian acak x dengan derajat kebebasan, kita dapat menggunakan fungsi `pt(q, df, ncp, lower.tail = TRUE, log.p = FALSE)` dimana q adalah titiknya dan df adalah derajat kebebasannya. Maka dari itu, `q` kita substitusikan dengan -2.34 dan `df` 6. Karena kita mencari probabilitas kurang dari, `lower.tail` dibiarkan mempunyai nilai `TRUE`.
 ```
