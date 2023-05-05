@@ -80,8 +80,11 @@ hist(rand, col = "grey", border = "black",
      xlab = "Banyak bayi laki-laki",
      ylab = "Frekuensi")
 ```
->> output 
+![hist1](./images/hist1.png)
 
+Bukti pengerjaan
+![no1](./images/no1.png)
+![no12](./images/no1(2).png)
 ### Soal 2
 Diketahui:  
 n = 20  
@@ -175,6 +178,9 @@ output:
 
 h. Apabila diubah menjadi persentase sesuai dengan jumlah sampelnya, simulasi yang memiliki 2 juta percobaan menunjukkan bahwa ada kemungkinan 3,65025% untuk kematian diatas 4. Sedangkan menurut 2.d, ada kemungkinan 3,64066% untuk kematian diatas 4. Selisihnya lumayan kecil yaitu sekitar 0,01%. Dari sini saya dapat menyimpulkan kalau percobaan 2d valid tanpa keanehan apapun. Selisih sekecil itu dapat dimaklumi karena menimbang simulasi berjalan dengan 2 juta percobaan.
 
+bukti pengerjaan
+![no2](./images/no2.png)
+![no22](./images/no2(2).png)
 ### Soal 3
 Diketahui:  
 x = 3  
@@ -185,7 +191,8 @@ a. Soal meminta kita untuk menggunakan distribusi chi-square. Fungsi probabilita
 # a. Distribusi Chi Square
 dchisq(x,v, ncp = 0, log = FALSE)
 ```
->> output
+output:
+> [1] 0.02353326
 
 b. Untuk membuat histogram dengan 500 data acak yang kita perlukan terlebih dahulu adalah menggunakan `rchisq(n, df, ncp = 0)` untuk meng-generate titik random. Lalu hasilnya akan dimasukkan sebagai parameter hist. Karena marginnya terlalu besar untuk saya, saya menggunakan fungsi `par()` untuk mengubah ukuran graf histogramnya
 ```
@@ -198,7 +205,7 @@ hist(rand, col = "grey", border = "black",
      xlab = "x-axis",
      ylab = "y-axis")
 ```
->> output
+![dici](./images/histchi.png)
 
 c. Nilai rataan chi-square sama dengan degree of freedomnya. Sedangkan variannya adalah 2*dof
 ```
@@ -208,7 +215,12 @@ cat(
   "Varian: ", 2*v, "\n"
 )
 ```
-output
+output:
+> Nilai rataan:  10 
+> Varian:  20
+
+bukti pengerjaan
+![no3](./images/no3.png)
 ### Soal 4
 Diketahui:  
 mean = 45 
@@ -258,7 +270,7 @@ par(mar = c(2, 2, 2, 2))
 plot(zs, main = "Data bangkitan acak", type="b")
 ```
 output:
-
+![acak](./images/acak.png
 b. Untuk membuat histogram cukup dengan memasukkan hasil `rnorm` ke dalam `hist`
 ```
 # b.Membuat histogram 
@@ -269,13 +281,17 @@ hist(rand, breaks = 50,
      ylab = "Frekuensi")
 ```
 output:
-
+![histdn](./images/histdn.png)
 c. Nilai varian dari distribusi normal adalah kuadrat dari standar deviasinya
 ```
 cat("Varian: ", sd^2, "\n")
 ```
 output:
-> Varian:  25 
+> Varian:  25
+
+bukti pengerjaan
+![no4](./images/no4.png)
+![no42](./images/no4(2).png)
 ### Soal 5
 a. Soal meminta kita untuk menggunakan distribusi T-student. Untuk menghitung probabilitas terjadinya kejadian acak x dengan derajat kebebasan, kita dapat menggunakan fungsi `pt(q, df, ncp, lower.tail = TRUE, log.p = FALSE)` dimana q adalah titiknya dan df adalah derajat kebebasannya. Maka dari itu, `q` kita substitusikan dengan -2.34 dan `df` 6. Karena kita mencari probabilitas kurang dari, `lower.tail` dibiarkan mempunyai nilai `TRUE`.
 ```
@@ -366,3 +382,7 @@ qt(0.98335, 23, lower.tail = TRUE, log.p = FALSE)
 ```
 output:  
 > T-score:  2.264201  
+
+bukti pengerjaan
+![no5](./images/no5.png)
+![no5](./images/no5(2).png)
