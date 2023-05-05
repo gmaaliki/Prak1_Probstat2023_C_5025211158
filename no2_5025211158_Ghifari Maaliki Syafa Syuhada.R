@@ -7,11 +7,11 @@
 
 # 2
 
-n <- c(0:20)
+n <- 20
 l <- 1.8
 
 # a. Distribusi kematian karena kanker tulang
-dpois(n, l, log = FALSE)
+dpois(0:n, l, log = FALSE)
 
 # b. Memeriksa ketidakbiasaan 4 kematian akibat kanker tulang
 cat("P(x=4): ",
