@@ -14,13 +14,22 @@ l <- 1.8
 dpois(n, l, log = FALSE)
 
 # b. Memeriksa ketidakbiasaan 4 kematian akibat kanker tulang
-# Untuk alpha = 0.05
+cat("P(x=4): ",
+    dpois(4, l, log = FALSE)  
+    , "\n"
+)
 
 # c. Peluang paling banyak 4 kematian akibat kanker tulang
-ppois(4, l, lower.tail = TRUE, log.p = FALSE)
+cat("P(x<4): ",
+    ppois(4, l, lower.tail = TRUE, log.p = FALSE)
+    , "\n"
+)
 
 # d. Peluang lebih dari 4 kematian akibat kanker tulang
-ppois(4, l, lower.tail = FALSE, log.p = FALSE)
+cat("P(x>4): ",
+    ppois(4, l, lower.tail = FALSE, log.p = FALSE)
+, "\n"
+)
 
 # e. Nilai harapan dan standar deviasi
 cat(
@@ -37,3 +46,10 @@ hist(rand, col = "grey", border = "black",
      xlab = "Banyak Kematian",
      ylab = "Frekuensi")
 
+# g. Membuat simulasi
+rand_sim <- rpois(2000000, l)
+
+cat("Hasil simulasi\n",
+    "P(x>4): ", sum(rand_sim > 4),
+    "\n"
+    )

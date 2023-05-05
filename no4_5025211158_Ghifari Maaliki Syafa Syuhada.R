@@ -6,25 +6,33 @@
 # ----------------------- Distribusi Probabilitas -----------------------
 
 # 4 
+
+# a.
 mean <- 45
-x1 <- 44
+x1 <- 45
 x2 <- 46
 
 sd <- 5
 
-# a. Menentukan fungsi probabilitas distribusi normal
-# z-score
-#cat("z1: ", (x1 - mean) / sd, "\n",
-#    "z2: ", (x2 - mean) / sd, "\n"
-#)
-#
-#prob <- (pnorm(z2) - pnorm(z1))
-
 set.seed(0)
 rand <- rnorm(100, mean, sd)
-plot(rand, main = "Scatterpoint")
 
-# b.
+cat("P(X1 ≤ x ≤ X2): ", 
+    pnorm(x2, mean, sd, lower.tail = TRUE, log.p = FALSE) -
+      pnorm(x1, mean,sd, lower.tail = TRUE, log.p = FALSE)
+    ,"\n"
+    )
+
+cat("z-score: ",
+    zs <- (rand - mean(rand)) / sd
+    ,"\n"
+    )
+
+par(mar = c(2, 2, 2, 2))
+
+plot(zs, main = "Data bangkitan acak", type="b")
+
+# b.Membuat histogram 
 hist(rand, breaks = 50, 
      col = "grey", border = "black",
      main = "Histogram Distribusi Normal",

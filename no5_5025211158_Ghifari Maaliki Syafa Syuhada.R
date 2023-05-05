@@ -47,14 +47,12 @@ qt(0.125, 25, lower.tail = FALSE, log.p = FALSE)
 
 # g. Nilai t-score dengan dof=11 dan luas=0.75 diantara t-score dan negatifnya
 cat("T-score: ",
-qt(0.875, 11, lower.tail = TRUE, log.p = FALSE) -
-  qt(0.125, 11, lower.tail = TRUE, log.p = FALSE)
+qt(0.875, 11, lower.tail = TRUE, log.p = FALSE)
 , "\n"
 )
 
 # h. Nilai t-score dengan dof=23 dan luas=0.0333 diluar t-score dan negatifnya
 cat("T-score: ",
-qt(0.98335, 23, lower.tail = FALSE, log.p = FALSE) +
-  qt(0.01665, 23, lower.tail = TRUE, log.p = FALSE)
+qt(0.98335, 23, lower.tail = TRUE, log.p = FALSE)
 , "\n"
 )
