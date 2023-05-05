@@ -12,7 +12,7 @@ a. Dapat kita lihat bahwa pada soal ini kita menggunakan distribusi binomial kar
 ```
 # a. Distribusi banyak bayi laki-laki
 cat("Distribusi: ",
-    probs <- c(dbinom(vals, n, p, log = FALSE))
+    dbinom(vals, n, p, log = FALSE)
     ,"\n"
 )
 ```
