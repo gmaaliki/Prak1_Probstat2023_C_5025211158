@@ -11,12 +11,12 @@ x <- 3
 v <- 10
 
 # a. Distribusi Chi Square
-dchisq(x,v)
+dchisq(x,v, ncp = 0, log = FALSE)
 
 # b. Membuat histogram dengan 500 data acak
 set.seed(0)
-rand <- rchisq(500, v)
-par(mar = c(1, 1, 1, 1))
+rand <- rchisq(500, v, ncp = 0)
+par(mar = c(2, 2, 2, 2))
 hist(rand, col = "grey", border = "black",
      main = "Histogram Chi Square",
      xlab = "x-axis",

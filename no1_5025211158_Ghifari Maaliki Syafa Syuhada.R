@@ -13,7 +13,7 @@ vals <- c(0:10)
 
 # a. Distribusi banyak bayi laki-laki
 cat("Distribusi: ",
-    probs <- c(dbinom(vals, n, p, log = FALSE))
+    dbinom(vals, n, p, log = FALSE)
     ,"\n"
 )
 
@@ -38,12 +38,12 @@ cat("Kemungkinan lebih dari 3 bayi laki-laki dilahirkan: ",
 
 # e. Nilai harapan dan standar deviasi
 cat("Nilai harapan: ",
-    ev <- sum(vals*probs)    
+    ev <- n*p
     ,"\n"
 )
 
-cat("Nilai harapan: ",
-    sqrt(sum((vals - ev)^2 * probs))
+cat("Standar deviasi: ",
+    sqrt(n*p*(1-p))
     ,"\n"
 )
 
