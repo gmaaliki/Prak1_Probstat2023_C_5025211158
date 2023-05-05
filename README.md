@@ -119,7 +119,8 @@ cat("T-score: ",
     , "\n"
 )
 ```
->> output
+> output:
+> T-score:  0.02892197 
 
 b. Untuk menentukan probabilitas terjadinya kejadian acak x lebih dari 1.34 dengan 6 derajat kebebasan kita hanya perlu memodifikasi kode sebelumnya. Nilai `q` kita ganti dengan 1.34 dan `lower.tail` adalah `FALSE` karena kiat menghitung dari kanan
 ```
@@ -129,7 +130,8 @@ pt(1.34, 6, lower.tail = FALSE, log.p = FALSE)
 , "\n"
 )
 ```
->> output
+> output:
+> T-score:  0.11438 
 
 c. Untuk menentukan probabilitas ini, kita perlu memperhatikan bahwa grafiknya akan terpisah menjadi 2 bagian. maka dari itu kita perlu memanggil fungsi `pt` 2 kali. Kita akan menghitung luas kedua ujung secara terpisah lalu keduanya ditambahkan untuk mendapatkan probabilitasnya
 ```
@@ -140,6 +142,8 @@ pt(-1.23, 3, lower.tail = TRUE, log.p = FALSE) +
 , "\n"
 )
 ```
+> output:  
+> T-score:  0.306356 
 
 d. Untuk menentukan probabilitas ini, kita perthatikan bahwa grafiknya sekarang menjadi satu dan berada di tengah. Salah satu cara kita dapat menghitung luasnya adalah dengan menghitung luas ke titik terjauh terlebih dahulu lalu menguranginya dengan luas ke titik terdekat. Maka nilai `lower.tail` dari kedua pemanggilan fungsi harus sama
 ```
@@ -150,6 +154,8 @@ pt(0.94, 14, lower.tail = TRUE, log.p = FALSE) -
 , "\n"
 )
 ```
+> output:  
+> T-score:  0.6368457
 
 e. Untuk mencari nilai t-score, kita dapat menggunakan fungsi `qt(p, df, ncp, lower.tail = TRUE, log.p = FALSE)` dimana p adalah luasan bawah kurva.
 ```
@@ -159,7 +165,8 @@ qt(0.0333, 5, lower.tail = TRUE, log.p = FALSE)
 , "\n"
 )
 ```
->> otput
+> output:  
+> T-score:  -2.337342
 
 f. Karena luasan ada di sebelh kanan, maka nilai `lower.tail` diganti `FALSE`. Setelah itu substitusikan luas dan derajat kebebasannya
 ```
@@ -169,7 +176,8 @@ qt(0.125, 25, lower.tail = FALSE, log.p = FALSE)
 , "\n"
 )
 ```
->> output
+> output:  
+> T-score:  1.177716
 
 g. Apabila kita perhatikan disini luasannya berada di tengah kurva dengan nilai 0.75. Hal itu berarti sisa luasan di bawah kurva adalah 0.25. Dan karena kurvanya simetris, kita dapat membagi luasnya menjadi 2 untuk mendapatkan luas salah satu sisi yaitu 0.125. Ini berarti titik t-score positif membagi kurva dengan bagian kiri memiliki luas = 1 - 0.125 = 0.875 dan bagian kanan memiliki luas 0.125. Kita dapat menggunakan fungsi `qt` biasa untuk mencaari t-score karena luasnya sudah diketahui
 ```
@@ -179,7 +187,8 @@ qt(0.875, 11, lower.tail = TRUE, log.p = FALSE)
 , "\n"
 )
 ```
->> output
+> output:  
+> T-score:  1.21446
 
 h. Apabila kita perhatikan disini luasannya berada di ujung-ujung kurva dengan nilai 0.0333. Hal itu bearti sisa luasan di bawah kurva adalah 0.9667. Karena kurvanya simetris, kita dapat membagi luasnya menjadi 2 untuk mendapatkan luas salah satu sisi yaitu 0.01665. Ini berati titik t-score positif membagi kurvadengan bagian kiri memiliki luas = 1 - 0.01665 dan bagian kanan memiliki luas 0.125. Kita sekali lagi dapat menggunakan fungsi `qt` biasa untuk mencari t-score karena luasnya sudah diketahui
 ```
@@ -189,4 +198,5 @@ qt(0.98335, 23, lower.tail = TRUE, log.p = FALSE)
 , "\n"
 )
 ```
->> output
+> output:  
+> T-score:  2.264201  
