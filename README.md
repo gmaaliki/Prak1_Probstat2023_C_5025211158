@@ -73,9 +73,42 @@ hist(rand, col = "grey", border = "black",
      xlab = "Banyak bayi laki-laki",
      ylab = "Frekuensi")
 ```
->> output  
+>> output 
 ### Soal 2
 ### Soal 3
+Diketahui:  
+x = 3  
+v = 10  
+
+a. Soal meminta kita untuk menggunakan distribusi chi-square. Fungsi probabilitas chi-square pada `R` adalah menggunakan `dchisq(x, df, ncp = 0, log = FALSE)`. `df` atau degree of freedom dalam soal dilambangkan dengan `v`. Maka kita hanya perlu mensubstitusikannya
+```
+# a. Distribusi Chi Square
+dchisq(x,v, ncp = 0, log = FALSE)
+```
+>> output
+
+b. Untuk membuat histogram dengan 500 data acak yang kita perlukan terlebih dahulu adalah menggunakan `rchisq(n, df, ncp = 0)` untuk meng-generate titik random. Lalu hasilnya akan dimasukkan sebagai parameter hist. Karena marginnya terlalu besar untuk saya, saya menggunakan fungsi `par()` untuk mengubah ukuran graf histogramnya
+```
+# b. Membuat histogram dengan 500 data acak
+set.seed(0)
+rand <- rchisq(500, v, ncp = 0)
+par(mar = c(2, 2, 2, 2))
+hist(rand, col = "grey", border = "black",
+     main = "Histogram Chi Square",
+     xlab = "x-axis",
+     ylab = "y-axis")
+```
+>> output
+
+c. Nilai rataan chi-square sama dengan degree of freedomnya. Sedangkan variannya adalah 2*dof
+```
+# c. Nilai rataan dan varian Chi Square
+cat(
+  "Nilai rataan: ", v, "\n",
+  "Varian: ", 2*v, "\n"
+)
+```
+>> output
 ### Soal 4
 ### Soal 5
 
