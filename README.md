@@ -111,4 +111,82 @@ cat(
 >> output
 ### Soal 4
 ### Soal 5
+a. Soal meminta kita untuk menggunakan distribusi T-student. Untuk menghitung probabilitas terjadinya kejadian acak x dengan derajat kebebasan, kita dapat menggunakan fungsi `pt(q, df, ncp, lower.tail = TRUE, log.p = FALSE)` dimana q adalah titiknya dan df adalah derajat kebebasannya. Maka dari itu, `q` kita substitusikan dengan -2.34 dan `df` 6. Karena kita mencari probabilitas kurang dari, `lower.tail` dibiarkan mempunyai nilai `TRUE`.
+```
+# a. Probabilitas X kurang dari -2.34 dof=6
+cat("T-score: ",
+      pt(-2.34, 6, lower.tail = TRUE, log.p = FALSE)
+    , "\n"
+)
+```
+>> output
 
+b. Untuk menentukan probabilitas terjadinya kejadian acak x lebih dari 1.34 dengan 6 derajat kebebasan kita hanya perlu memodifikasi kode sebelumnya. Nilai `q` kita ganti dengan 1.34 dan `lower.tail` adalah `FALSE` karena kiat menghitung dari kanan
+```
+# b. Probabilitas X lebih dari 1.34 dof=6
+cat("T-score: ",
+pt(1.34, 6, lower.tail = FALSE, log.p = FALSE)
+, "\n"
+)
+```
+>> output
+
+c. Untuk menentukan probabilitas ini, kita perlu memperhatikan bahwa grafiknya akan terpisah menjadi 2 bagian. maka dari itu kita perlu memanggil fungsi `pt` 2 kali. Kita akan menghitung luas kedua ujung secara terpisah lalu keduanya ditambahkan untuk mendapatkan probabilitasnya
+```
+# c. Probabilitas X kurang dari -1.23 atau lebih dari 1.23, dof=3
+cat("T-score: ",
+pt(-1.23, 3, lower.tail = TRUE, log.p = FALSE) +
+  pt(1.23, 3, lower.tail = FALSE, log.p = FALSE)
+, "\n"
+)
+```
+
+d. Untuk menentukan probabilitas ini, kita perthatikan bahwa grafiknya sekarang menjadi satu dan berada di tengah. Salah satu cara kita dapat menghitung luasnya adalah dengan menghitung luas ke titik terjauh terlebih dahulu lalu menguranginya dengan luas ke titik terdekat. Maka nilai `lower.tail` dari kedua pemanggilan fungsi harus sama
+```
+# d. Probabilitas X diantara -0.94 dan 0.94, dof=14
+cat("T-score: ",
+pt(0.94, 14, lower.tail = TRUE, log.p = FALSE) -
+  pt(-0.94, 14, lower.tail = TRUE, log.p = FALSE)
+, "\n"
+)
+```
+
+e. Untuk mencari nilai t-score, kita dapat menggunakan fungsi `qt(p, df, ncp, lower.tail = TRUE, log.p = FALSE)` dimana p adalah luasan bawah kurva.
+```
+# e. Nilai t-score dengan dof=5 dan luas=0.0333 di sebelah kiri
+cat("T-score: ",
+qt(0.0333, 5, lower.tail = TRUE, log.p = FALSE)
+, "\n"
+)
+```
+>> otput
+
+f. Karena luasan ada di sebelh kanan, maka nilai `lower.tail` diganti `FALSE`. Setelah itu substitusikan luas dan derajat kebebasannya
+```
+# f. Nilai t-score dengan dof=25 dan luas=0.125 di sebelah kanan
+cat("T-score: ",
+qt(0.125, 25, lower.tail = FALSE, log.p = FALSE)
+, "\n"
+)
+```
+>> output
+
+g. Apabila kita perhatikan disini luasannya berada di tengah kurva dengan nilai 0.75. Hal itu berarti sisa luasan di bawah kurva adalah 0.25. Dan karena kurvanya simetris, kita dapat membagi luasnya menjadi 2 untuk mendapatkan luas salah satu sisi yaitu 0.125. Ini berarti titik t-score positif membagi kurva dengan bagian kiri memiliki luas = 1 - 0.125 = 0.875 dan bagian kanan memiliki luas 0.125. Kita dapat menggunakan fungsi `qt` biasa untuk mencaari t-score karena luasnya sudah diketahui
+```
+# g. Nilai t-score dengan dof=11 dan luas=0.75 diantara t-score dan negatifnya
+cat("T-score: ",
+qt(0.875, 11, lower.tail = TRUE, log.p = FALSE)
+, "\n"
+)
+```
+>> output
+
+h. Apabila kita perhatikan disini luasannya berada di ujung-ujung kurva dengan nilai 0.0333. Hal itu bearti sisa luasan di bawah kurva adalah 0.9667. Karena kurvanya simetris, kita dapat membagi luasnya menjadi 2 untuk mendapatkan luas salah satu sisi yaitu 0.01665. Ini berati titik t-score positif membagi kurvadengan bagian kiri memiliki luas = 1 - 0.01665 dan bagian kanan memiliki luas 0.125. Kita sekali lagi dapat menggunakan fungsi `qt` biasa untuk mencari t-score karena luasnya sudah diketahui
+```
+# h. Nilai t-score dengan dof=23 dan luas=0.0333 diluar t-score dan negatifnya
+cat("T-score: ",
+qt(0.98335, 23, lower.tail = TRUE, log.p = FALSE)
+, "\n"
+)
+```
+>> output
